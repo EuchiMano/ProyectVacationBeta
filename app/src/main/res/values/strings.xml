@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Top</string>
+    <string name="action_settings">Settings</string>
+    <string name="proplayer_hint_nombre">Nombre</string>
+    <string name="proplayer_hint_orden">Orden</string>
+
+</resources>
