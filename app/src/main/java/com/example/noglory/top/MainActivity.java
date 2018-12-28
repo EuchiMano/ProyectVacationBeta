@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     }
 
     //Metodos implementados por la intefaz OnItemClickListener
+    //
 
     @Override
     public void OnItemClick(ProPlayer proPlayer) {
