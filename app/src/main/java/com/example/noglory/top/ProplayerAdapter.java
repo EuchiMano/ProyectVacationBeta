@@ -2,6 +2,7 @@ package com.example.noglory.top;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.RelativeLayout;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +48,20 @@ public class ProplayerAdapter extends RecyclerView.Adapter<ProplayerAdapter.View
         viewHolder.setListener(proPlayer, listener);
         viewHolder.tvNombre.setText(proPlayer.getNombreCompleto());
         viewHolder.tvOrden.setText(String.valueOf(proPlayer.getOrden()));
+
+        if (proPlayer.getFotoUrl() != null){
+            RequestOptions options = new RequestOptions();
+            options.diskCacheStrategy(DiskCacheStrategy.ALL);
+            options.centerCrop();
+            options.placeholder(R.drawable.ic_sentiment_satisfied);
+
+            Glide.with(context)
+                    .load(proPlayer.getFotoUrl())
+                    .apply(options)
+                    .into(viewHolder.imagePhoto);
+        }else {
+            viewHolder.imagePhoto.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_account_box_black_24dp));
+        }
     }
 
     @Override
